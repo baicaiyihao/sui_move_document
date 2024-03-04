@@ -12,7 +12,7 @@ https://github.com/MystenLabs/sui/releases
 
 Release提供四种不同类型的操作系统的二进制文件  
 
-[![image2.png](https://github.com/baicaiyihao/sui_move_document/blob/main/SuiStartrek/assets/image-20240304140942375.png)]
+![image2.png](./assets/image-20240304140942375.png)
 
 这里选择ubuntu系统的压缩包，建议选择mainnet作为本地sui环境配置。
 
@@ -129,11 +129,11 @@ fi
 
 脚本实现新安装或者更新，下图是检测到本地的版本过低进行了更新
 
-[![image2.png](https://github.com/baicaiyihao/sui_move_document/blob/main/SuiStartrek/assets/image-20240304142258464.png)]
+![image2.png](./assets/image-20240304142258464.png)
 
 检查本地版本为更新后的版本
 
-[![image3.png](https://github.com/baicaiyihao/sui_move_document/blob/main/SuiStartrek/assets/image-20240304142423829.png)]
+![image3.png](./assets/image-20240304142423829.png)
 
 
 
