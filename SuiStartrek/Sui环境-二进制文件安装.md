@@ -12,7 +12,7 @@ https://github.com/MystenLabs/sui/releases
 
 Release提供四种不同类型的操作系统的二进制文件  
 
-![image-20240304140942375](E:\360MoveData\Users\admin\Desktop\sui_move_document\SuiStartrek\Sui环境-二进制文件安装.assets\image-20240304140942375.png)
+![image-20240304140942375](.\Sui环境-二进制文件安装.assets\image-20240304140942375.png)
 
 这里选择ubuntu系统的压缩包，建议选择mainnet作为本地sui环境配置。
 
@@ -66,10 +66,8 @@ source ~/.bashrc
 ```bash
 #!/bin/bash
 
-# 定义需要操作的根目录
 TARGET_DIR=/root/sui
 
-# 检查目标目录是否存在，如果不存在则创建
 if [ ! -d "$TARGET_DIR" ]; then
 	    echo "Creating $TARGET_DIR directory..."
 	        mkdir "$TARGET_DIR"
@@ -77,68 +75,52 @@ if [ ! -d "$TARGET_DIR" ]; then
 		    echo "$TARGET_DIR directory already exists."
 fi
 
-# 进入目标目录
 cd "$TARGET_DIR"
 
-#获取github最新版本
 latest_version_tag=$(curl -s "https://api.github.com/repos/MystenLabs/sui/releases" | jq -r '.[] | select(.tag_name | test("mainnet")) | .tag_name' | head -n 1)
 
 
-# 定义版本文件的路径
 version_file="${TARGET_DIR}/sui_version.txt"
 
-# 检查版本文件是否存在并读取本地版本号
 if [ -f "$version_file" ]; then
     local_version_tag=$(cat "$version_file")
     echo "Local Sui version: $local_version_tag"
 else
-    # 文件不存在，设置本地版本为空
     local_version_tag=""
     echo "Version file not found. Will download the latest version."
 fi
 
 
 
-# 比较本地版本号与最新版本号，如果不同或本地版本为空，则下载最新版本
 if [ "$local_version_tag" != "$latest_version_tag" ] || [ -z "$local_version_tag" ]; then
     echo "Downloading the latest Sui mainnet version: $latest_version_tag"
 
-    # 获取最新版本的下载链接
 	download_url=$(curl -s "https://api.github.com/repos/MystenLabs/sui/releases" | jq -r '.[] | select(.name | test("mainnet")) | .assets[] | select(.name | test("ubuntu-x86_64.tgz")) | .browser_download_url' | head -n 1)
 
-    # 下载并解压Sui devnet最新版本
     wget "$download_url" -O sui-mainnet-release.tgz
     tar -zxvf sui-mainnet-release.tgz
 
-    # 将最新版本号写入版本文件cd 
     echo "$latest_version_tag" > "$version_file"
     echo "New Sui mainnet version downloaded and extracted."
 
-	# 重命名并移动文件到目标文件夹
 	for f in target/release/*-ubuntu-x86_64; do
-		# 获取原始文件名和新文件名
 		original_name=$(basename "$f")
 		new_name="${original_name%-ubuntu-x86_64}"
 
-			# 移动并替换目标目录中的同名文件
 			echo "Renaming and moving $original_name to $TARGET_DIR/$new_name..."
 				mv -f "$f" "$TARGET_DIR/$new_name"
 		done
 
-		# 回到原始目录，生效PATH
 		echo "Adding Sui to PATH in .bashrc..."
 		echo 'export PATH="$PATH:'"$TARGET_DIR"'"' >> ~/.bashrc
 		source ~/.bashrc
 
-		# 删除下载的tar.gz文件
 		echo "Removing the downloaded tar.gz file..."
 		rm -f sui-mainnet-release.tgz
 
-		# 清理不必要的目录
 		echo "Cleaning up unnecessary directories..."
 		rm -rf target external-crates
 
-		# 显示完成消息
 		echo "All tasks have been completed."
 else
     echo "Current Sui mainnet version is up-to-date with the latest version: $local_version_tag"
@@ -147,11 +129,11 @@ fi
 
 脚本实现新安装或者更新，下图是检测到本地的版本过低进行了更新
 
-![image-20240304142258464](E:\360MoveData\Users\admin\Desktop\sui_move_document\SuiStartrek\Sui环境-二进制文件安装.assets\image-20240304142258464.png)
+[![image-20240304142258464](https://github.com/baicaiyihao/sui_move_document/tree/main/SuiStartrek/Sui%E7%8E%AF%E5%A2%83-%E4%BA%8C%E8%BF%9B%E5%88%B6%E6%96%87%E4%BB%B6%E5%AE%89%E8%A3%85.assets\image-20240304142258464.png)]](https://github.com/baicaiyihao/sui_move_document/tree/main/SuiStartrek/Sui%E7%8E%AF%E5%A2%83-%E4%BA%8C%E8%BF%9B%E5%88%B6%E6%96%87%E4%BB%B6%E5%AE%89%E8%A3%85.assets\image-20240304142258464.png)
 
 检查本地版本为更新后的版本
 
-![image-20240304142423829](E:\360MoveData\Users\admin\Desktop\sui_move_document\SuiStartrek\Sui环境-二进制文件安装.assets\image-20240304142423829.png)
+![image-20240304142423829](.\Sui环境-二进制文件安装.assets\image-20240304142423829.png)
 
 
 
