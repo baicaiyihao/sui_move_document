@@ -12,7 +12,7 @@ https://github.com/MystenLabs/sui/releases
 
 Release提供四种不同类型的操作系统的二进制文件  
 
-![image-20240304140942375](.\Sui环境-二进制文件安装.assets\image-20240304140942375.png)
+[![image2.png](https://github.com/baicaiyihao/sui_move_document/blob/main/SuiStartrek/assets/image-20240304140942375.png)]
 
 这里选择ubuntu系统的压缩包，建议选择mainnet作为本地sui环境配置。
 
@@ -129,11 +129,11 @@ fi
 
 脚本实现新安装或者更新，下图是检测到本地的版本过低进行了更新
 
-[![image-20240304142258464](https://github.com/baicaiyihao/sui_move_document/tree/main/SuiStartrek/Sui%E7%8E%AF%E5%A2%83-%E4%BA%8C%E8%BF%9B%E5%88%B6%E6%96%87%E4%BB%B6%E5%AE%89%E8%A3%85.assets\image-20240304142258464.png)]](https://github.com/baicaiyihao/sui_move_document/tree/main/SuiStartrek/Sui%E7%8E%AF%E5%A2%83-%E4%BA%8C%E8%BF%9B%E5%88%B6%E6%96%87%E4%BB%B6%E5%AE%89%E8%A3%85.assets\image-20240304142258464.png)
+[![image2.png](https://github.com/baicaiyihao/sui_move_document/blob/main/SuiStartrek/assets/image-20240304142258464.png)]
 
 检查本地版本为更新后的版本
 
-![image-20240304142423829](.\Sui环境-二进制文件安装.assets\image-20240304142423829.png)
+[![image3.png](https://github.com/baicaiyihao/sui_move_document/blob/main/SuiStartrek/assets/image-20240304142423829.png)]
 
 
 
